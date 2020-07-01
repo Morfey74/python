@@ -1,5 +1,4 @@
 import requests
 with open ('in.txt') as inf:
-    url = inf.readline().strip()
-r=requests.get(url)
+    r=requests.get(inf.readline().strip())
 print(len(r.text.splitlines()))
