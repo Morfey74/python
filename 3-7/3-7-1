@@ -1,0 +1,26 @@
+n=int(input())
+k=set()
+x=[]
+result={}
+for i in range(n):
+    x.append(input().split('\n'))
+b=[str(x[j]).strip("[]'").split(';') for j in range(len(x))]
+for i in range(len(b)):
+    for j in range(len([i])):
+        if b[i][0] not in result:
+            result[b[i][0]]=[0,0,0,0,0]
+        if b[i][2] not in result:
+            result.update({b[i][2]:[0,0,0,0,0]})
+        s1 = result[b[i][0]]
+        s2 = result[b[i][2]]
+    if int(b[i][1]) > int(b[i][3]):
+        result[b[i][0]]=[s1[0] + 1, s1[1] + 1, s1[2], s1[3], s1[4] + 3]
+        result[b[i][2]]=[s2[0] + 1, s2[1], s2[2], s2[3] + 1, s2[4]]
+    elif int(b[i][1]) == int(b[i][3]):
+        result[b[i][0]]= [s1[0] + 1, s1[1], s1[2]+1, s1[3], s1[4] + 1]
+        result[b[i][2]]= [s2[0] + 1, s2[1], s2[2]+1, s2[3], s2[4] + 1]
+    elif int(b[i][1]) < int(b[i][3]):
+        result[b[i][0]] = [s1[0] + 1, s1[1], s1[2], s1[3]+1, s1[4]]
+        result[b[i][2]] = [s2[0] + 1, s2[1] + 1, s2[2], s2[3], s2[4] + 3]
+for key,value in result.items():
+     print(key.strip()+':'+' '.join(map(str, value)))
