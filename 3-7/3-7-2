@@ -1,0 +1,2 @@
+s, encrypt, decrypt = dict(zip(list(input()),list(input()))),list(input()),list(input()) # ввод данных- первые 2 строки образуют словарь, 3 и 4 строка два списка
+print((''.join((value for i in encrypt for key, value in s.items() if key==i))),'\n',(''.join((key for i in decrypt for key, value in s.items() if value==i))), sep='', end='')
